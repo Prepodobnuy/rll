@@ -1,3 +1,3 @@
-pub(crate) mod backend;
+pub mod backend;
 pub mod crossterm;
 pub mod traits;
