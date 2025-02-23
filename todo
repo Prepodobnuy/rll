@@ -1,0 +1,6 @@
+[] "ContentWide" size variant
+[] mouse input capture in crossterm backend
+[] sane wrapContent behavior in crossterm backend
+[] maybe qt backend
+[] floating containers
+[] scrollable containers
