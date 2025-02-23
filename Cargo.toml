@@ -5,6 +5,7 @@ edition = "2021"
 authors = ["prepodobnuy <prepodobnuy@inbox.ru>"]
 description = "A simple Layout Rust library"
 license = "MIT"
+repository = "https://github.com/Prepodobnuy/rll"
 
 [dependencies]
 crossterm = "0.28.1"
