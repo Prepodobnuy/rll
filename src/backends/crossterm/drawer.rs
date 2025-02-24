@@ -163,7 +163,7 @@ impl RenderPart {
             }
         } else {
             let _ = stdout.execute(MoveTo(h_pos as u16 + self.geometry.2 as u16, v_pos as u16 + self.geometry.3 as u16));
-            let _ = stdout.execute(Print(&contaiment.clone()[0..(self.geometry.0 - (h_pos + self.geometry.2)) as usize]));
+            let _ = stdout.execute(Print(&contaiment.clone()[0..(self.geometry.0 - h_pos - self.geometry.2) as usize]));
         }
 
     }
