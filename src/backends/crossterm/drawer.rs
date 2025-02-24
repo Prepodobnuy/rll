@@ -148,8 +148,23 @@ impl RenderPart {
         let mut stdout = stdout();
 
         let _ = stdout.execute(Hide);
-        let _ = stdout.execute(MoveTo(h_pos as u16 + self.geometry.2 as u16, v_pos as u16 + self.geometry.3 as u16));
-        let _ = stdout.execute(Print(contaiment.clone()));
+
+        if self.wrap_contaiment {
+            for char in contaiment.chars() {
+                let _ = stdout.execute(MoveTo(h_pos as u16 + self.geometry.2 as u16, v_pos as u16 + self.geometry.3 as u16));
+                let _ = stdout.execute(Print(char));
+                if h_pos == self.geometry.0 {
+                    h_pos = 0;
+                    v_pos += 1;
+                }
+                if v_pos > self.geometry.1 {
+                    break;
+                }
+            }
+        } else {
+            let _ = stdout.execute(MoveTo(h_pos as u16 + self.geometry.2 as u16, v_pos as u16 + self.geometry.3 as u16));
+            let _ = stdout.execute(Print(contaiment.clone()));
+        }
 
     }
 }
