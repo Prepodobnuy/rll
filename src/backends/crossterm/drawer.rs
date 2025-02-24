@@ -153,6 +153,7 @@ impl RenderPart {
             for char in contaiment.chars() {
                 let _ = stdout.execute(MoveTo(h_pos as u16 + self.geometry.2 as u16, v_pos as u16 + self.geometry.3 as u16));
                 let _ = stdout.execute(Print(char));
+                h_pos += 1;
                 if h_pos == self.geometry.0 {
                     h_pos = 0;
                     v_pos += 1;
@@ -163,15 +164,10 @@ impl RenderPart {
             }
         } else {
             let _ = stdout.execute(MoveTo(h_pos as u16 + self.geometry.2 as u16, v_pos as u16 + self.geometry.3 as u16));
-            let size: usize = (self.geometry.0 - h_pos - self.geometry.2) as usize;
-            //let _ = stdout.execute(
-            //    Print(
-            //        &contaiment.clone()[
-            //            0
-            //            ..
-            //            if size > 1 {size} else {1}
-            //        ]
-            //    ));
+            let size: usize = (self.geometry.0 - h_pos) as usize;
+            let _ = stdout.execute(Print(
+                &contaiment[0..if size > contaiment_len {contaiment_len} else {size}]
+            ));
         }
 
     }
